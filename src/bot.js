@@ -1,11 +1,14 @@
+require('dotenv').config({ path: './config/.env' }); 
+console.log("Loaded Token:", process.env.TOKEN ? "Exists" : "Not Found"); 
+
 const { Client, GatewayIntentBits } = require('discord.js');
 
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,  // Added to access message content
-    GatewayIntentBits.GuildMembers,   // Added to access member updates
+    GatewayIntentBits.MessageContent,  
+    GatewayIntentBits.GuildMembers,   
   ],
 });
 
