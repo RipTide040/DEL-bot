@@ -1,11 +1,11 @@
-require('dotenv').config({ path: './config/.env' });
 const { Client, GatewayIntentBits } = require('discord.js');
 
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.MessageContent,  // Added to access message content
+    GatewayIntentBits.GuildMembers,   // Added to access member updates
   ],
 });
 
@@ -15,10 +15,8 @@ client.once('ready', () => {
 
 client.on('messageCreate', (message) => {
   if (message.author.bot) return;
-
   if (message.content.startsWith('s!')) {
     const command = message.content.slice(2).trim();
-
     if (command === 'hello') {
       message.channel.send('world');
     }
